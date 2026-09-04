@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>StratConn Dependency Graph</title>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <style>
+        body {
+            margin: 0;
+            padding: 20px;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+        .container {
+            max-width: 1600px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+        }
+        header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+        header h1 {
+            margin: 0 0 10px 0;
+            font-size: 2.5em;
+        }
+        .controls {
+            padding: 20px;
+            background: #f5f5f5;
+            border-bottom: 1px solid #ddd;
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+        input, button {
+            padding: 8px 12px;
+            border: 1px solid #999;
+            border-radius: 4px;
+            font-size: 1em;
+        }
+        button {
+            background: #667eea;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-weight: 600;
+        }
+        button:hover {
+            background: #764ba2;
+        }
+        button.active {
+            background: #43a047;
+            box-shadow: 0 0 10px rgba(67, 160, 71, 0.5);
+        }
+        #graph {
+            width: 100%;
+            height: 700px;
+            background: #fafafa;
+            border-bottom: 1px solid #ddd;
+        }
+        .info {
+            padding: 20px;
+            background: #f9f9f9;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+        .panel {
+            background: white;
+            padding: 15px;
+            border-radius: 5px;
+            border-left: 4px solid #667eea;
+            max-height: 400px;
+            overflow-y: auto;
+        }
+        .panel h3 {
+            margin: 0 0 10px 0;
+            color: #667eea;
+        }
+        .item {
+            background: #f5f5f5;
+            padding: 5px 10px;
+            margin: 5px 0;
+            border-radius: 3px;
+            font-family: monospace;
+            font-size: 0.9em;
+        }
+        .legend {
+            padding: 20px;
+            background: #f5f5f5;
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            border-top: 1px solid #ddd;
+        }
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .color-box {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+        }
+        svg {
+            border: 1px solid #eee;
+        }
+        .node {
+            cursor: pointer;
+            stroke: white;
+            stroke-width: 2;
+        }
+        .node:hover {
+            stroke-width: 3;
+            filter: brightness(1.2);
+        }
+        .node.selected {
+            stroke: #ff6b6b;
+            stroke-width: 3;
+            filter: drop-shadow(0 0 5px rgba(255, 107, 107, 0.5));
+        }
+        .link {
+            stroke: #999;
+            stroke-opacity: 0.3;
+            stroke-width: 2;
+        }
+        .link.selected {
+            stroke: #667eea;
+            stroke-opacity: 0.8;
+            stroke-width: 3;
+        }
+        text {
+            font-size: 11px;
+            pointer-events: none;
+            text-anchor: middle;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🔗 StratConn Dependency Graph</h1>
+            <p>Interactive visualization of module imports and method calls</p>
+        </header>
+        
+        <div class="controls">
+            <input type="text" id="search" placeholder="Search module..." />
+            <button id="importFilterBtn" onclick="toggleImportFilter()">Show Only Import Links</button>
+            <button onclick="resetGraph()">Reset View</button>
+        </div>
+        
+        <div id="graph"></div>
+        
+        <div class="info">
+            <div class="panel">
+                <h3>📋 Module Info</h3>
+                <div id="moduleInfo"><p style="color: #999;">Click a node to see details</p></div>
+            </div>
+            <div class="panel">
+                <h3>🔗 Dependencies</h3>
+                <div id="depsInfo"><p style="color: #999;">Connections will show here</p></div>
+            </div>
+        </div>
+        
+        <div class="legend">
+            <div class="legend-item"><div class="color-box" style="background: #667eea;"></div>Core</div>
+            <div class="legend-item"><div class="color-box" style="background: #f09433;"></div>Interface/Gateway</div>
+            <div class="legend-item"><div class="color-box" style="background: #43a047;"></div>Strategy/Tracking</div>
+            <div class="legend-item"><div class="color-box" style="background: #e53935;"></div>Entry Point</div>
+        </div>
+    </div>
+
+    <script>
+        const rawDeps = {"Core.event": {"path": "/home/lenovo/Desktop/StratConn/SRC/Core/event.py", "imports": ["dataclasses", "datetime", "typing", "tb_types"], "classes": ["Event"], "methods_defined": [], "methods_called": []}, "Core.event_dispatcher": {"path": "/home/lenovo/Desktop/StratConn/SRC/Core/event_dispatcher.py", "imports": ["typing", "zoneinfo", "dataclasses", "datetime", "functools", "tb_types", "event"], "classes": ["EventDispatcher"], "methods_defined": ["decorator", "EventDispatcher.add_listeners", "dispatch_event", "wrapper", "EventDispatcher.dispatch", "EventDispatcher.__init__"], "methods_called": ["Event", "func", "wraps", "callback", "getattr", "append", "datetime.datetime.fromtimestamp", "event_dispatcher.dispatch"]}, "Core.order": {"path": "/home/lenovo/Desktop/StratConn/SRC/Core/order.py", "imports": ["dataclasses", "typing", "tb_types"], "classes": ["Order"], "methods_defined": ["Order.set", "Order.asdict"], "methods_called": ["setattr", "kwargs.items", "asdict", "hasattr", "AttributeError"]}, "Core.position": {"path": "/home/lenovo/Desktop/StratConn/SRC/Core/position.py", "imports": ["dataclasses", "typing", "tb_types"], "classes": ["Position"], "methods_defined": ["Position.set", "Position.asdict"], "methods_called": ["setattr", "kwargs.items", "asdict", "hasattr", "AttributeError"]}, "Core.request": {"path": "/home/lenovo/Desktop/StratConn/SRC/Core/request.py", "imports": ["enum"], "classes": ["REQUEST"], "methods_defined": [], "methods_called": ["auto"]}, "Core.tb_types": {"path": "/home/lenovo/Desktop/StratConn/SRC/Core/tb_types.py", "imports": ["enum"], "classes": ["Side", "OrderType", "OrderStatus", "Asset", "EventType", "PositionStatus"], "methods_defined": [], "methods_called": ["auto"]}, "GatewayCommand.ManagerCommand": {"path": "/home/lenovo/Desktop/StratConn/SRC/GatewayCommand/ManagerCommand.py", "imports": ["Interfaces.WEB.HTTPClient"], "classes": ["GateComm"], "methods_defined": ["GateComm.get_price", "GateComm.start_simulation", "GateComm.__init__"], "methods_called": ["self.sender.send_request", "BasicClient"]}, "GatewayCommand.StratCommand": {"path": "/home/lenovo/Desktop/StratConn/SRC/GatewayCommand/StratCommand.py", "imports": ["Interfaces.WEB.HTTPClient", "Core.order"], "classes": ["GateComm"], "methods_defined": ["GateComm.submit_order", "GateComm.close_position", "GateComm.__init__", "GateComm.cancel_order"], "methods_called": ["self.sender.send_request", "BasicClient"]}, "Interfaces.SQL.LowLevelConn": {"path": "/home/lenovo/Desktop/StratConn/SRC/Interfaces/SQL/LowLevelConn.py", "imports": [], "classes": [], "methods_defined": [], "methods_called": []}, "Interfaces.WEB.HTTPClient": {"path": "/home/lenovo/Desktop/StratConn/SRC/Interfaces/WEB/HTTPClient.py", "imports": ["urllib.request", "json"], "classes": ["BasicClient"], "methods_defined": ["BasicClient.__init__", "BasicClient.send_request"], "methods_called": ["decode", "encode", "urlopen", "json.dumps", "response.read", "str", "json.loads", "Request"]}, "Interfaces.WEB.HTTPServer": {"path": "/home/lenovo/Desktop/StratConn/SRC/Interfaces/WEB/HTTPServer.py", "imports": ["TrackingEngine.Tracker", "http.server", "json"], "classes": ["MyHandler"], "methods_defined": ["MyHandler.do_POST", "MyHandler.do_OPTIONS", "MyHandler._send_json", "run"], "methods_called": ["self._send_json", "encode", "json.dumps", "self.Sub_handler", "server_class", "run", "self.headers.get", "body.decode", "self.wfile.write", "str", "self.send_header", "json.loads", "httpd.serve_forever", "int", "len", "my_infos.get", "self.send_error", "GenTrack", "self.end_headers", "self.rfile.read", "self.send_response"]}, "Interfaces.WEB.WSocServ": {"path": "/home/lenovo/Desktop/StratConn/SRC/Interfaces/WEB/WSocServ.py", "imports": ["socket", "threading"], "classes": ["WebSocketServer"], "methods_defined": ["WebSocketServer._run_simulation", "WebSocketServer.start_simulation", "WebSocketServer.__init__"], "methods_called": ["self._thread.start", "socket.socket", "threading.Lock", "conn.sendall", "threading.Thread", "sock.bind", "conn.recv", "sock.listen", "sock.accept", "print"]}, "Strategies.StratTemplate.Temp_MainStrat": {"path": "/home/lenovo/Desktop/StratConn/SRC/Strategies/StratTemplate/Temp_MainStrat.py", "imports": ["Core.request", "random", "Core.tb_types", "Core.order", "Utils"], "classes": ["strategie"], "methods_defined": ["strategie.ProcessEvent", "strategie.__init__", "strategie.ProcessPrice"], "methods_called": ["randint", "GetOrderById", "Order"]}, "Strategies.Utils": {"path": "/home/lenovo/Desktop/StratConn/SRC/Strategies/Utils.py", "imports": [], "classes": [], "methods_defined": ["GetOrderById"], "methods_called": []}, "TrackingEngine.Tracker": {"path": "/home/lenovo/Desktop/StratConn/SRC/TrackingEngine/Tracker.py", "imports": ["Core.request", "Core.tb_types", "Strategies.StratTemplate.Temp_MainStrat", "GatewayCommand.StratCommand", "datetime", "importlib"], "classes": ["GenTrack"], "methods_defined": ["GenTrack.UpdatePrice", "GenTrack.SendEvent", "GenTrack.__init__"], "methods_called": ["strategie_mod.strategie", "GateComm", "self.CurStrat.ProcessPrice", "strategie", "self.GateComm.submit_order", "self.Current_Orders.append", "importlib.import_module", "self.CurStrat.ProcessEvent", "datetime.datetime.now"]}, "main": {"path": "/home/lenovo/Desktop/StratConn/SRC/main.py", "imports": ["Interfaces.WEB", "TrackingEngine"], "classes": [], "methods_defined": [], "methods_called": ["HTTPServer.run"]}};
+        
+        function getModuleColor(name) {
+            if (name.startsWith('Core')) return '#667eea';
+            if (name.startsWith('Interfaces') || name.startsWith('GatewayCommand')) return '#f09433';
+            if (name.startsWith('Strategies') || name.startsWith('TrackingEngine')) return '#43a047';
+            if (name === 'main') return '#e53935';
+            return '#999';
+        }
+        
+        // Build node and link data
+        const nodes = Object.keys(rawDeps).map(name => ({
+            id: name,
+            name: name,
+            label: name.split('.').pop(),
+            color: getModuleColor(name)
+        }));
+        
+        const linkSet = new Set();
+        const links = [];
+        
+        Object.entries(rawDeps).forEach(([source, data]) => {
+            if (data.imports) {
+                data.imports.forEach(imp => {
+                    const target = Object.keys(rawDeps).find(k => 
+                        k.endsWith(imp) || imp.includes(k.split('.').pop())
+                    );
+                    if (target && source !== target) {
+                        const key = `${source}-${target}`;
+                        if (!linkSet.has(key)) {
+                            links.push({ source, target, type: 'import' });
+                            linkSet.add(key);
+                        }
+                    }
+                });
+            }
+        });
+        
+        const width = document.getElementById('graph').clientWidth;
+        const height = document.getElementById('graph').clientHeight;
+        const svg = d3.select('#graph').append('svg').attr('width', width).attr('height', height);
+        
+        const g = svg.append('g');
+        const simulation = d3.forceSimulation(nodes)
+            .force('link', d3.forceLink(links).id(d => d.id).distance(120))
+            .force('charge', d3.forceManyBody().strength(-400))
+            .force('center', d3.forceCenter(width / 2, height / 2));
+        
+        // Draw links
+        const link = g.selectAll('.link')
+            .data(links)
+            .enter()
+            .append('line')
+            .attr('class', 'link')
+            .attr('stroke', '#ccc');
+        
+        // Draw nodes
+        const node = g.selectAll('.node')
+            .data(nodes)
+            .enter()
+            .append('circle')
+            .attr('class', 'node')
+            .attr('r', 12)
+            .attr('fill', d => d.color)
+            .call(d3.drag()
+                .on('start', dragstart)
+                .on('drag', dragged)
+                .on('end', dragend)
+            );
+        
+        // Add labels
+        const labels = g.selectAll('.label')
+            .data(nodes)
+            .enter()
+            .append('text')
+            .attr('class', 'label')
+            .text(d => d.label)
+            .attr('dy', '.35em');
+        
+        function dragstart(e, d) {
+            if (!e.active) simulation.alphaTarget(0.3).restart();
+            d.fx = d.x; d.fy = d.y;
+        }
+        function dragged(e, d) {
+            d.fx = e.x; d.fy = e.y;
+        }
+        function dragend(e, d) {
+            if (!e.active) simulation.alphaTarget(0);
+            d.fx = null; d.fy = null;
+        }
+        
+        node.on('click', (e, d) => {
+            node.classed('selected', n => n.id === d.id);
+            link.classed('selected', l => 
+                l.source.id === d.id || l.target.id === d.id
+            );
+            
+            let html = `<div class="item"><strong>${d.name}</strong></div>`;
+            const data = rawDeps[d.name];
+            if (data.classes && data.classes.length) {
+                html += '<strong>Classes:</strong>';
+                data.classes.slice(0, 5).forEach(c => {
+                    html += `<div class="item">${c}</div>`;
+                });
+            }
+            if (data.methods_defined && data.methods_defined.length) {
+                html += '<strong>Methods:</strong>';
+                data.methods_defined.slice(0, 5).forEach(m => {
+                    html += `<div class="item">${m}</div>`;
+                });
+            }
+            document.getElementById('moduleInfo').innerHTML = html;
+            
+            const imports = links.filter(l => l.source.id === d.id).map(l => l.target.name);
+            const importedBy = links.filter(l => l.target.id === d.id).map(l => l.source.name);
+            let depsHtml = '';
+            if (imports.length) {
+                depsHtml += '<strong>Imports:</strong>';
+                imports.forEach(imp => {
+                    depsHtml += `<div class="item">${imp}</div>`;
+                });
+            }
+            if (importedBy.length) {
+                depsHtml += '<strong>Imported By:</strong>';
+                importedBy.forEach(imp => {
+                    depsHtml += `<div class="item">${imp}</div>`;
+                });
+            }
+            document.getElementById('depsInfo').innerHTML = depsHtml || '<p style="color:#999;">No dependencies</p>';
+        });
+        
+        simulation.on('tick', () => {
+            link
+                .attr('x1', d => d.source.x)
+                .attr('y1', d => d.source.y)
+                .attr('x2', d => d.target.x)
+                .attr('y2', d => d.target.y);
+            node.attr('cx', d => d.x).attr('cy', d => d.y);
+            labels.attr('x', d => d.x).attr('y', d => d.y);
+        });
+        
+        document.getElementById('search').addEventListener('input', e => {
+            const query = e.target.value.toLowerCase();
+            node.style('opacity', d => 
+                query === '' || d.name.toLowerCase().includes(query) ? 1 : 0.2
+            );
+            link.style('opacity', l => 
+                query === '' || l.source.name.toLowerCase().includes(query) || 
+                l.target.name.toLowerCase().includes(query) ? 1 : 0.1
+            );
+        });
+        
+        let importFilterActive = false;
+        
+        function toggleImportFilter() {
+            importFilterActive = !importFilterActive;
+            const btn = document.getElementById('importFilterBtn');
+            
+            if (importFilterActive) {
+                btn.classList.add('active');
+                btn.textContent = '✓ Only Import Links';
+                // Show only import links
+                link.style('display', l => l.type === 'import' ? 'block' : 'none')
+                    .style('opacity', l => l.type === 'import' ? 1 : 0);
+            } else {
+                btn.classList.remove('active');
+                btn.textContent = 'Show Only Import Links';
+                // Show all links
+                link.style('display', 'block')
+                    .style('opacity', 1);
+            }
+        }
+        
+        function resetGraph() {
+            node.classed('selected', false);
+            link.classed('selected', false);
+            document.getElementById('search').value = '';
+            node.style('opacity', 1);
+            link.style('opacity', 1);
+            link.style('display', 'block');
+            document.getElementById('moduleInfo').innerHTML = '<p style="color:#999;">Click a node to see details</p>';
+            document.getElementById('depsInfo').innerHTML = '<p style="color:#999;">Connections will show here</p>';
+            importFilterActive = false;
+            document.getElementById('importFilterBtn').classList.remove('active');
+            document.getElementById('importFilterBtn').textContent = 'Show Only Import Links';
+        }
+    </script>
+</body>
+</html>

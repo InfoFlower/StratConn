@@ -1,0 +1,334 @@
+{
+  "Core.event": {
+    "path": "/home/lenovo/Desktop/StratConn/SRC/Core/event.py",
+    "imports": [
+      "dataclasses",
+      "datetime",
+      "typing",
+      "tb_types"
+    ],
+    "classes": [
+      "Event"
+    ],
+    "methods_defined": [],
+    "methods_called": []
+  },
+  "Core.event_dispatcher": {
+    "path": "/home/lenovo/Desktop/StratConn/SRC/Core/event_dispatcher.py",
+    "imports": [
+      "typing",
+      "zoneinfo",
+      "dataclasses",
+      "datetime",
+      "functools",
+      "tb_types",
+      "event"
+    ],
+    "classes": [
+      "EventDispatcher"
+    ],
+    "methods_defined": [
+      "decorator",
+      "EventDispatcher.add_listeners",
+      "dispatch_event",
+      "wrapper",
+      "EventDispatcher.dispatch",
+      "EventDispatcher.__init__"
+    ],
+    "methods_called": [
+      "Event",
+      "func",
+      "wraps",
+      "callback",
+      "getattr",
+      "append",
+      "datetime.datetime.fromtimestamp",
+      "event_dispatcher.dispatch"
+    ]
+  },
+  "Core.order": {
+    "path": "/home/lenovo/Desktop/StratConn/SRC/Core/order.py",
+    "imports": [
+      "dataclasses",
+      "typing",
+      "tb_types"
+    ],
+    "classes": [
+      "Order"
+    ],
+    "methods_defined": [
+      "Order.set",
+      "Order.asdict"
+    ],
+    "methods_called": [
+      "setattr",
+      "kwargs.items",
+      "asdict",
+      "hasattr",
+      "AttributeError"
+    ]
+  },
+  "Core.position": {
+    "path": "/home/lenovo/Desktop/StratConn/SRC/Core/position.py",
+    "imports": [
+      "dataclasses",
+      "typing",
+      "tb_types"
+    ],
+    "classes": [
+      "Position"
+    ],
+    "methods_defined": [
+      "Position.set",
+      "Position.asdict"
+    ],
+    "methods_called": [
+      "setattr",
+      "kwargs.items",
+      "asdict",
+      "hasattr",
+      "AttributeError"
+    ]
+  },
+  "Core.request": {
+    "path": "/home/lenovo/Desktop/StratConn/SRC/Core/request.py",
+    "imports": [
+      "enum"
+    ],
+    "classes": [
+      "REQUEST"
+    ],
+    "methods_defined": [],
+    "methods_called": [
+      "auto"
+    ]
+  },
+  "Core.tb_types": {
+    "path": "/home/lenovo/Desktop/StratConn/SRC/Core/tb_types.py",
+    "imports": [
+      "enum"
+    ],
+    "classes": [
+      "Side",
+      "OrderType",
+      "OrderStatus",
+      "Asset",
+      "EventType",
+      "PositionStatus"
+    ],
+    "methods_defined": [],
+    "methods_called": [
+      "auto"
+    ]
+  },
+  "GatewayCommand.ManagerCommand": {
+    "path": "/home/lenovo/Desktop/StratConn/SRC/GatewayCommand/ManagerCommand.py",
+    "imports": [
+      "Interfaces.WEB.HTTPClient"
+    ],
+    "classes": [
+      "GateComm"
+    ],
+    "methods_defined": [
+      "GateComm.get_price",
+      "GateComm.start_simulation",
+      "GateComm.__init__"
+    ],
+    "methods_called": [
+      "self.sender.send_request",
+      "BasicClient"
+    ]
+  },
+  "GatewayCommand.StratCommand": {
+    "path": "/home/lenovo/Desktop/StratConn/SRC/GatewayCommand/StratCommand.py",
+    "imports": [
+      "Interfaces.WEB.HTTPClient",
+      "Core.order"
+    ],
+    "classes": [
+      "GateComm"
+    ],
+    "methods_defined": [
+      "GateComm.submit_order",
+      "GateComm.close_position",
+      "GateComm.__init__",
+      "GateComm.cancel_order"
+    ],
+    "methods_called": [
+      "self.sender.send_request",
+      "BasicClient"
+    ]
+  },
+  "Interfaces.SQL.LowLevelConn": {
+    "path": "/home/lenovo/Desktop/StratConn/SRC/Interfaces/SQL/LowLevelConn.py",
+    "imports": [],
+    "classes": [],
+    "methods_defined": [],
+    "methods_called": []
+  },
+  "Interfaces.WEB.HTTPClient": {
+    "path": "/home/lenovo/Desktop/StratConn/SRC/Interfaces/WEB/HTTPClient.py",
+    "imports": [
+      "urllib.request",
+      "json"
+    ],
+    "classes": [
+      "BasicClient"
+    ],
+    "methods_defined": [
+      "BasicClient.__init__",
+      "BasicClient.send_request"
+    ],
+    "methods_called": [
+      "decode",
+      "encode",
+      "urlopen",
+      "json.dumps",
+      "response.read",
+      "str",
+      "json.loads",
+      "Request"
+    ]
+  },
+  "Interfaces.WEB.HTTPServer": {
+    "path": "/home/lenovo/Desktop/StratConn/SRC/Interfaces/WEB/HTTPServer.py",
+    "imports": [
+      "TrackingEngine.Tracker",
+      "http.server",
+      "json"
+    ],
+    "classes": [
+      "MyHandler"
+    ],
+    "methods_defined": [
+      "MyHandler.do_POST",
+      "MyHandler.do_OPTIONS",
+      "MyHandler._send_json",
+      "run"
+    ],
+    "methods_called": [
+      "self._send_json",
+      "encode",
+      "json.dumps",
+      "self.Sub_handler",
+      "server_class",
+      "run",
+      "self.headers.get",
+      "body.decode",
+      "self.wfile.write",
+      "str",
+      "self.send_header",
+      "json.loads",
+      "httpd.serve_forever",
+      "int",
+      "len",
+      "my_infos.get",
+      "self.send_error",
+      "GenTrack",
+      "self.end_headers",
+      "self.rfile.read",
+      "self.send_response"
+    ]
+  },
+  "Interfaces.WEB.WSocServ": {
+    "path": "/home/lenovo/Desktop/StratConn/SRC/Interfaces/WEB/WSocServ.py",
+    "imports": [
+      "socket",
+      "threading"
+    ],
+    "classes": [
+      "WebSocketServer"
+    ],
+    "methods_defined": [
+      "WebSocketServer._run_simulation",
+      "WebSocketServer.start_simulation",
+      "WebSocketServer.__init__"
+    ],
+    "methods_called": [
+      "self._thread.start",
+      "socket.socket",
+      "threading.Lock",
+      "conn.sendall",
+      "threading.Thread",
+      "sock.bind",
+      "conn.recv",
+      "sock.listen",
+      "sock.accept",
+      "print"
+    ]
+  },
+  "Strategies.StratTemplate.Temp_MainStrat": {
+    "path": "/home/lenovo/Desktop/StratConn/SRC/Strategies/StratTemplate/Temp_MainStrat.py",
+    "imports": [
+      "Core.request",
+      "random",
+      "Core.tb_types",
+      "Core.order",
+      "Utils"
+    ],
+    "classes": [
+      "strategie"
+    ],
+    "methods_defined": [
+      "strategie.ProcessEvent",
+      "strategie.__init__",
+      "strategie.ProcessPrice"
+    ],
+    "methods_called": [
+      "randint",
+      "GetOrderById",
+      "Order"
+    ]
+  },
+  "Strategies.Utils": {
+    "path": "/home/lenovo/Desktop/StratConn/SRC/Strategies/Utils.py",
+    "imports": [],
+    "classes": [],
+    "methods_defined": [
+      "GetOrderById"
+    ],
+    "methods_called": []
+  },
+  "TrackingEngine.Tracker": {
+    "path": "/home/lenovo/Desktop/StratConn/SRC/TrackingEngine/Tracker.py",
+    "imports": [
+      "Core.request",
+      "Core.tb_types",
+      "Strategies.StratTemplate.Temp_MainStrat",
+      "GatewayCommand.StratCommand",
+      "datetime",
+      "importlib"
+    ],
+    "classes": [
+      "GenTrack"
+    ],
+    "methods_defined": [
+      "GenTrack.UpdatePrice",
+      "GenTrack.SendEvent",
+      "GenTrack.__init__"
+    ],
+    "methods_called": [
+      "strategie_mod.strategie",
+      "GateComm",
+      "self.CurStrat.ProcessPrice",
+      "strategie",
+      "self.GateComm.submit_order",
+      "self.Current_Orders.append",
+      "importlib.import_module",
+      "self.CurStrat.ProcessEvent",
+      "datetime.datetime.now"
+    ]
+  },
+  "main": {
+    "path": "/home/lenovo/Desktop/StratConn/SRC/main.py",
+    "imports": [
+      "Interfaces.WEB",
+      "TrackingEngine"
+    ],
+    "classes": [],
+    "methods_defined": [],
+    "methods_called": [
+      "HTTPServer.run"
+    ]
+  }
+}

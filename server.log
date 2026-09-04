@@ -1,0 +1,650 @@
+----------------------------------------
+Exception occurred during processing of request from ('127.0.0.1', 48438)
+Traceback (most recent call last):
+  File "/usr/lib/python3.11/socketserver.py", line 317, in _handle_request_noblock
+    self.process_request(request, client_address)
+  File "/usr/lib/python3.11/socketserver.py", line 348, in process_request
+    self.finish_request(request, client_address)
+  File "/usr/lib/python3.11/socketserver.py", line 361, in finish_request
+    self.RequestHandlerClass(request, client_address, self)
+  File "/usr/lib/python3.11/socketserver.py", line 755, in __init__
+    self.handle()
+  File "/usr/lib/python3.11/http/server.py", line 432, in handle
+    self.handle_one_request()
+  File "/usr/lib/python3.11/http/server.py", line 420, in handle_one_request
+    method()
+  File "/home/lenovo/Desktop/StratConn/SRC/Interfaces/WEB/HTTPServer.py", line 31, in do_POST
+    response = self.Sub_handler(request, my_infos)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/lenovo/Desktop/StratConn/SRC/TrackingEngine/Tracker.py", line 17, in __call__
+    response = self.CStrat.SendEvent(my_infos)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/lenovo/Desktop/StratConn/SRC/TrackingEngine/ConnStrat.py", line 43, in SendEvent
+    TypeEvent,DataEvent = data['EventType'],data['data']
+                          ~~~~^^^^^^^^^^^^^
+KeyError: 'EventType'
+----------------------------------------
+----------------------------------------
+Exception occurred during processing of request from ('127.0.0.1', 48444)
+Traceback (most recent call last):
+  File "/usr/lib/python3.11/socketserver.py", line 317, in _handle_request_noblock
+    self.process_request(request, client_address)
+  File "/usr/lib/python3.11/socketserver.py", line 348, in process_request
+    self.finish_request(request, client_address)
+  File "/usr/lib/python3.11/socketserver.py", line 361, in finish_request
+    self.RequestHandlerClass(request, client_address, self)
+  File "/usr/lib/python3.11/socketserver.py", line 755, in __init__
+    self.handle()
+  File "/usr/lib/python3.11/http/server.py", line 432, in handle
+    self.handle_one_request()
+  File "/usr/lib/python3.11/http/server.py", line 420, in handle_one_request
+    method()
+  File "/home/lenovo/Desktop/StratConn/SRC/Interfaces/WEB/HTTPServer.py", line 31, in do_POST
+    response = self.Sub_handler(request, my_infos)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/lenovo/Desktop/StratConn/SRC/TrackingEngine/Tracker.py", line 17, in __call__
+    response = self.CStrat.SendEvent(my_infos)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/lenovo/Desktop/StratConn/SRC/TrackingEngine/ConnStrat.py", line 43, in SendEvent
+    TypeEvent,DataEvent = data['EventType'],data['data']
+                          ~~~~^^^^^^^^^^^^^
+KeyError: 'EventType'
+----------------------------------------
+----------------------------------------
+Exception occurred during processing of request from ('127.0.0.1', 48456)
+Traceback (most recent call last):
+  File "/usr/lib/python3.11/socketserver.py", line 317, in _handle_request_noblock
+    self.process_request(request, client_address)
+  File "/usr/lib/python3.11/socketserver.py", line 348, in process_request
+    self.finish_request(request, client_address)
+  File "/usr/lib/python3.11/socketserver.py", line 361, in finish_request
+    self.RequestHandlerClass(request, client_address, self)
+  File "/usr/lib/python3.11/socketserver.py", line 755, in __init__
+    self.handle()
+  File "/usr/lib/python3.11/http/server.py", line 432, in handle
+    self.handle_one_request()
+  File "/usr/lib/python3.11/http/server.py", line 420, in handle_one_request
+    method()
+  File "/home/lenovo/Desktop/StratConn/SRC/Interfaces/WEB/HTTPServer.py", line 31, in do_POST
+    response = self.Sub_handler(request, my_infos)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/lenovo/Desktop/StratConn/SRC/TrackingEngine/Tracker.py", line 17, in __call__
+    response = self.CStrat.SendEvent(my_infos)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/lenovo/Desktop/StratConn/SRC/TrackingEngine/ConnStrat.py", line 43, in SendEvent
+    TypeEvent,DataEvent = data['EventType'],data['data']
+                          ~~~~^^^^^^^^^^^^^
+KeyError: 'EventType'
+----------------------------------------
+----------------------------------------
+Exception occurred during processing of request from ('127.0.0.1', 48464)
+Traceback (most recent call last):
+  File "/usr/lib/python3.11/socketserver.py", line 317, in _handle_request_noblock
+    self.process_request(request, client_address)
+  File "/usr/lib/python3.11/socketserver.py", line 348, in process_request
+    self.finish_request(request, client_address)
+  File "/usr/lib/python3.11/socketserver.py", line 361, in finish_request
+    self.RequestHandlerClass(request, client_address, self)
+  File "/usr/lib/python3.11/socketserver.py", line 755, in __init__
+    self.handle()
+  File "/usr/lib/python3.11/http/server.py", line 432, in handle
+    self.handle_one_request()
+  File "/usr/lib/python3.11/http/server.py", line 420, in handle_one_request
+    method()
+  File "/home/lenovo/Desktop/StratConn/SRC/Interfaces/WEB/HTTPServer.py", line 31, in do_POST
+    response = self.Sub_handler(request, my_infos)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/lenovo/Desktop/StratConn/SRC/TrackingEngine/Tracker.py", line 17, in __call__
+    response = self.CStrat.SendEvent(my_infos)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/lenovo/Desktop/StratConn/SRC/TrackingEngine/ConnStrat.py", line 43, in SendEvent
+    TypeEvent,DataEvent = data['EventType'],data['data']
+                          ~~~~^^^^^^^^^^^^^
+KeyError: 'EventType'
+----------------------------------------
+----------------------------------------
+Exception occurred during processing of request from ('127.0.0.1', 48480)
+Traceback (most recent call last):
+  File "/usr/lib/python3.11/socketserver.py", line 317, in _handle_request_noblock
+    self.process_request(request, client_address)
+  File "/usr/lib/python3.11/socketserver.py", line 348, in process_request
+    self.finish_request(request, client_address)
+  File "/usr/lib/python3.11/socketserver.py", line 361, in finish_request
+    self.RequestHandlerClass(request, client_address, self)
+  File "/usr/lib/python3.11/socketserver.py", line 755, in __init__
+    self.handle()
+  File "/usr/lib/python3.11/http/server.py", line 432, in handle
+    self.handle_one_request()
+  File "/usr/lib/python3.11/http/server.py", line 420, in handle_one_request
+    method()
+  File "/home/lenovo/Desktop/StratConn/SRC/Interfaces/WEB/HTTPServer.py", line 31, in do_POST
+    response = self.Sub_handler(request, my_infos)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/lenovo/Desktop/StratConn/SRC/TrackingEngine/Tracker.py", line 17, in __call__
+    response = self.CStrat.SendEvent(my_infos)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/lenovo/Desktop/StratConn/SRC/TrackingEngine/ConnStrat.py", line 43, in SendEvent
+    TypeEvent,DataEvent = data['EventType'],data['data']
+                          ~~~~^^^^^^^^^^^^^
+KeyError: 'EventType'
+----------------------------------------
+----------------------------------------
+Exception occurred during processing of request from ('127.0.0.1', 48492)
+Traceback (most recent call last):
+  File "/usr/lib/python3.11/socketserver.py", line 317, in _handle_request_noblock
+    self.process_request(request, client_address)
+  File "/usr/lib/python3.11/socketserver.py", line 348, in process_request
+    self.finish_request(request, client_address)
+  File "/usr/lib/python3.11/socketserver.py", line 361, in finish_request
+    self.RequestHandlerClass(request, client_address, self)
+  File "/usr/lib/python3.11/socketserver.py", line 755, in __init__
+    self.handle()
+  File "/usr/lib/python3.11/http/server.py", line 432, in handle
+    self.handle_one_request()
+  File "/usr/lib/python3.11/http/server.py", line 420, in handle_one_request
+    method()
+  File "/home/lenovo/Desktop/StratConn/SRC/Interfaces/WEB/HTTPServer.py", line 31, in do_POST
+    response = self.Sub_handler(request, my_infos)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/lenovo/Desktop/StratConn/SRC/TrackingEngine/Tracker.py", line 17, in __call__
+    response = self.CStrat.SendEvent(my_infos)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/lenovo/Desktop/StratConn/SRC/TrackingEngine/ConnStrat.py", line 43, in SendEvent
+    TypeEvent,DataEvent = data['EventType'],data['data']
+                          ~~~~^^^^^^^^^^^^^
+KeyError: 'EventType'
+----------------------------------------
+----------------------------------------
+Exception occurred during processing of request from ('127.0.0.1', 48504)
+Traceback (most recent call last):
+  File "/usr/lib/python3.11/socketserver.py", line 317, in _handle_request_noblock
+    self.process_request(request, client_address)
+  File "/usr/lib/python3.11/socketserver.py", line 348, in process_request
+    self.finish_request(request, client_address)
+  File "/usr/lib/python3.11/socketserver.py", line 361, in finish_request
+    self.RequestHandlerClass(request, client_address, self)
+  File "/usr/lib/python3.11/socketserver.py", line 755, in __init__
+    self.handle()
+  File "/usr/lib/python3.11/http/server.py", line 432, in handle
+    self.handle_one_request()
+  File "/usr/lib/python3.11/http/server.py", line 420, in handle_one_request
+    method()
+  File "/home/lenovo/Desktop/StratConn/SRC/Interfaces/WEB/HTTPServer.py", line 31, in do_POST
+    response = self.Sub_handler(request, my_infos)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/lenovo/Desktop/StratConn/SRC/TrackingEngine/Tracker.py", line 17, in __call__
+    response = self.CStrat.SendEvent(my_infos)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/lenovo/Desktop/StratConn/SRC/TrackingEngine/ConnStrat.py", line 43, in SendEvent
+    TypeEvent,DataEvent = data['EventType'],data['data']
+                          ~~~~^^^^^^^^^^^^^
+KeyError: 'EventType'
+----------------------------------------
+----------------------------------------
+Exception occurred during processing of request from ('127.0.0.1', 48514)
+Traceback (most recent call last):
+  File "/usr/lib/python3.11/socketserver.py", line 317, in _handle_request_noblock
+    self.process_request(request, client_address)
+  File "/usr/lib/python3.11/socketserver.py", line 348, in process_request
+    self.finish_request(request, client_address)
+  File "/usr/lib/python3.11/socketserver.py", line 361, in finish_request
+    self.RequestHandlerClass(request, client_address, self)
+  File "/usr/lib/python3.11/socketserver.py", line 755, in __init__
+    self.handle()
+  File "/usr/lib/python3.11/http/server.py", line 432, in handle
+    self.handle_one_request()
+  File "/usr/lib/python3.11/http/server.py", line 420, in handle_one_request
+    method()
+  File "/home/lenovo/Desktop/StratConn/SRC/Interfaces/WEB/HTTPServer.py", line 31, in do_POST
+    response = self.Sub_handler(request, my_infos)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/lenovo/Desktop/StratConn/SRC/TrackingEngine/Tracker.py", line 17, in __call__
+    response = self.CStrat.SendEvent(my_infos)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/lenovo/Desktop/StratConn/SRC/TrackingEngine/ConnStrat.py", line 43, in SendEvent
+    TypeEvent,DataEvent = data['EventType'],data['data']
+                          ~~~~^^^^^^^^^^^^^
+KeyError: 'EventType'
+----------------------------------------
+----------------------------------------
+Exception occurred during processing of request from ('127.0.0.1', 48516)
+Traceback (most recent call last):
+  File "/usr/lib/python3.11/socketserver.py", line 317, in _handle_request_noblock
+    self.process_request(request, client_address)
+  File "/usr/lib/python3.11/socketserver.py", line 348, in process_request
+    self.finish_request(request, client_address)
+  File "/usr/lib/python3.11/socketserver.py", line 361, in finish_request
+    self.RequestHandlerClass(request, client_address, self)
+  File "/usr/lib/python3.11/socketserver.py", line 755, in __init__
+    self.handle()
+  File "/usr/lib/python3.11/http/server.py", line 432, in handle
+    self.handle_one_request()
+  File "/usr/lib/python3.11/http/server.py", line 420, in handle_one_request
+    method()
+  File "/home/lenovo/Desktop/StratConn/SRC/Interfaces/WEB/HTTPServer.py", line 31, in do_POST
+    response = self.Sub_handler(request, my_infos)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/lenovo/Desktop/StratConn/SRC/TrackingEngine/Tracker.py", line 17, in __call__
+    response = self.CStrat.SendEvent(my_infos)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/lenovo/Desktop/StratConn/SRC/TrackingEngine/ConnStrat.py", line 43, in SendEvent
+    TypeEvent,DataEvent = data['EventType'],data['data']
+                          ~~~~^^^^^^^^^^^^^
+KeyError: 'EventType'
+----------------------------------------
+----------------------------------------
+Exception occurred during processing of request from ('127.0.0.1', 48520)
+Traceback (most recent call last):
+  File "/usr/lib/python3.11/socketserver.py", line 317, in _handle_request_noblock
+    self.process_request(request, client_address)
+  File "/usr/lib/python3.11/socketserver.py", line 348, in process_request
+    self.finish_request(request, client_address)
+  File "/usr/lib/python3.11/socketserver.py", line 361, in finish_request
+    self.RequestHandlerClass(request, client_address, self)
+  File "/usr/lib/python3.11/socketserver.py", line 755, in __init__
+    self.handle()
+  File "/usr/lib/python3.11/http/server.py", line 432, in handle
+    self.handle_one_request()
+  File "/usr/lib/python3.11/http/server.py", line 420, in handle_one_request
+    method()
+  File "/home/lenovo/Desktop/StratConn/SRC/Interfaces/WEB/HTTPServer.py", line 31, in do_POST
+    response = self.Sub_handler(request, my_infos)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/lenovo/Desktop/StratConn/SRC/TrackingEngine/Tracker.py", line 17, in __call__
+    response = self.CStrat.SendEvent(my_infos)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/lenovo/Desktop/StratConn/SRC/TrackingEngine/ConnStrat.py", line 43, in SendEvent
+    TypeEvent,DataEvent = data['EventType'],data['data']
+                          ~~~~^^^^^^^^^^^^^
+KeyError: 'EventType'
+----------------------------------------
+----------------------------------------
+Exception occurred during processing of request from ('127.0.0.1', 42100)
+Traceback (most recent call last):
+  File "/usr/lib/python3.11/socketserver.py", line 317, in _handle_request_noblock
+    self.process_request(request, client_address)
+  File "/usr/lib/python3.11/socketserver.py", line 348, in process_request
+    self.finish_request(request, client_address)
+  File "/usr/lib/python3.11/socketserver.py", line 361, in finish_request
+    self.RequestHandlerClass(request, client_address, self)
+  File "/usr/lib/python3.11/socketserver.py", line 755, in __init__
+    self.handle()
+  File "/usr/lib/python3.11/http/server.py", line 432, in handle
+    self.handle_one_request()
+  File "/usr/lib/python3.11/http/server.py", line 420, in handle_one_request
+    method()
+  File "/home/lenovo/Desktop/StratConn/SRC/Interfaces/WEB/HTTPServer.py", line 31, in do_POST
+    response = self.Sub_handler(request, my_infos)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/lenovo/Desktop/StratConn/SRC/TrackingEngine/Tracker.py", line 17, in __call__
+    response = self.CStrat.SendEvent(my_infos)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/lenovo/Desktop/StratConn/SRC/TrackingEngine/ConnStrat.py", line 43, in SendEvent
+    TypeEvent,DataEvent = data['EventType'],data['data']
+                          ~~~~^^^^^^^^^^^^^
+KeyError: 'EventType'
+----------------------------------------
+----------------------------------------
+Exception occurred during processing of request from ('127.0.0.1', 42104)
+Traceback (most recent call last):
+  File "/usr/lib/python3.11/socketserver.py", line 317, in _handle_request_noblock
+    self.process_request(request, client_address)
+  File "/usr/lib/python3.11/socketserver.py", line 348, in process_request
+    self.finish_request(request, client_address)
+  File "/usr/lib/python3.11/socketserver.py", line 361, in finish_request
+    self.RequestHandlerClass(request, client_address, self)
+  File "/usr/lib/python3.11/socketserver.py", line 755, in __init__
+    self.handle()
+  File "/usr/lib/python3.11/http/server.py", line 432, in handle
+    self.handle_one_request()
+  File "/usr/lib/python3.11/http/server.py", line 420, in handle_one_request
+    method()
+  File "/home/lenovo/Desktop/StratConn/SRC/Interfaces/WEB/HTTPServer.py", line 31, in do_POST
+    response = self.Sub_handler(request, my_infos)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/lenovo/Desktop/StratConn/SRC/TrackingEngine/Tracker.py", line 17, in __call__
+    response = self.CStrat.SendEvent(my_infos)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/lenovo/Desktop/StratConn/SRC/TrackingEngine/ConnStrat.py", line 43, in SendEvent
+    TypeEvent,DataEvent = data['EventType'],data['data']
+                          ~~~~^^^^^^^^^^^^^
+KeyError: 'EventType'
+----------------------------------------
+----------------------------------------
+Exception occurred during processing of request from ('127.0.0.1', 42116)
+Traceback (most recent call last):
+  File "/usr/lib/python3.11/socketserver.py", line 317, in _handle_request_noblock
+    self.process_request(request, client_address)
+  File "/usr/lib/python3.11/socketserver.py", line 348, in process_request
+    self.finish_request(request, client_address)
+  File "/usr/lib/python3.11/socketserver.py", line 361, in finish_request
+    self.RequestHandlerClass(request, client_address, self)
+  File "/usr/lib/python3.11/socketserver.py", line 755, in __init__
+    self.handle()
+  File "/usr/lib/python3.11/http/server.py", line 432, in handle
+    self.handle_one_request()
+  File "/usr/lib/python3.11/http/server.py", line 420, in handle_one_request
+    method()
+  File "/home/lenovo/Desktop/StratConn/SRC/Interfaces/WEB/HTTPServer.py", line 31, in do_POST
+    response = self.Sub_handler(request, my_infos)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/lenovo/Desktop/StratConn/SRC/TrackingEngine/Tracker.py", line 17, in __call__
+    response = self.CStrat.SendEvent(my_infos)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/lenovo/Desktop/StratConn/SRC/TrackingEngine/ConnStrat.py", line 43, in SendEvent
+    TypeEvent,DataEvent = data['EventType'],data['data']
+                          ~~~~^^^^^^^^^^^^^
+KeyError: 'EventType'
+----------------------------------------
+----------------------------------------
+Exception occurred during processing of request from ('127.0.0.1', 42126)
+Traceback (most recent call last):
+  File "/usr/lib/python3.11/socketserver.py", line 317, in _handle_request_noblock
+    self.process_request(request, client_address)
+  File "/usr/lib/python3.11/socketserver.py", line 348, in process_request
+    self.finish_request(request, client_address)
+  File "/usr/lib/python3.11/socketserver.py", line 361, in finish_request
+    self.RequestHandlerClass(request, client_address, self)
+  File "/usr/lib/python3.11/socketserver.py", line 755, in __init__
+    self.handle()
+  File "/usr/lib/python3.11/http/server.py", line 432, in handle
+    self.handle_one_request()
+  File "/usr/lib/python3.11/http/server.py", line 420, in handle_one_request
+    method()
+  File "/home/lenovo/Desktop/StratConn/SRC/Interfaces/WEB/HTTPServer.py", line 31, in do_POST
+    response = self.Sub_handler(request, my_infos)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/lenovo/Desktop/StratConn/SRC/TrackingEngine/Tracker.py", line 17, in __call__
+    response = self.CStrat.SendEvent(my_infos)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/lenovo/Desktop/StratConn/SRC/TrackingEngine/ConnStrat.py", line 43, in SendEvent
+    TypeEvent,DataEvent = data['EventType'],data['data']
+                          ~~~~^^^^^^^^^^^^^
+KeyError: 'EventType'
+----------------------------------------
+----------------------------------------
+Exception occurred during processing of request from ('127.0.0.1', 42132)
+Traceback (most recent call last):
+  File "/usr/lib/python3.11/socketserver.py", line 317, in _handle_request_noblock
+    self.process_request(request, client_address)
+  File "/usr/lib/python3.11/socketserver.py", line 348, in process_request
+    self.finish_request(request, client_address)
+  File "/usr/lib/python3.11/socketserver.py", line 361, in finish_request
+    self.RequestHandlerClass(request, client_address, self)
+  File "/usr/lib/python3.11/socketserver.py", line 755, in __init__
+    self.handle()
+  File "/usr/lib/python3.11/http/server.py", line 432, in handle
+    self.handle_one_request()
+  File "/usr/lib/python3.11/http/server.py", line 420, in handle_one_request
+    method()
+  File "/home/lenovo/Desktop/StratConn/SRC/Interfaces/WEB/HTTPServer.py", line 31, in do_POST
+    response = self.Sub_handler(request, my_infos)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/lenovo/Desktop/StratConn/SRC/TrackingEngine/Tracker.py", line 17, in __call__
+    response = self.CStrat.SendEvent(my_infos)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/lenovo/Desktop/StratConn/SRC/TrackingEngine/ConnStrat.py", line 43, in SendEvent
+    TypeEvent,DataEvent = data['EventType'],data['data']
+                          ~~~~^^^^^^^^^^^^^
+KeyError: 'EventType'
+----------------------------------------
+----------------------------------------
+Exception occurred during processing of request from ('127.0.0.1', 42146)
+Traceback (most recent call last):
+  File "/usr/lib/python3.11/socketserver.py", line 317, in _handle_request_noblock
+    self.process_request(request, client_address)
+  File "/usr/lib/python3.11/socketserver.py", line 348, in process_request
+    self.finish_request(request, client_address)
+  File "/usr/lib/python3.11/socketserver.py", line 361, in finish_request
+    self.RequestHandlerClass(request, client_address, self)
+  File "/usr/lib/python3.11/socketserver.py", line 755, in __init__
+    self.handle()
+  File "/usr/lib/python3.11/http/server.py", line 432, in handle
+    self.handle_one_request()
+  File "/usr/lib/python3.11/http/server.py", line 420, in handle_one_request
+    method()
+  File "/home/lenovo/Desktop/StratConn/SRC/Interfaces/WEB/HTTPServer.py", line 31, in do_POST
+    response = self.Sub_handler(request, my_infos)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/lenovo/Desktop/StratConn/SRC/TrackingEngine/Tracker.py", line 17, in __call__
+    response = self.CStrat.SendEvent(my_infos)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/lenovo/Desktop/StratConn/SRC/TrackingEngine/ConnStrat.py", line 43, in SendEvent
+    TypeEvent,DataEvent = data['EventType'],data['data']
+                          ~~~~^^^^^^^^^^^^^
+KeyError: 'EventType'
+----------------------------------------
+----------------------------------------
+Exception occurred during processing of request from ('127.0.0.1', 42150)
+Traceback (most recent call last):
+  File "/usr/lib/python3.11/socketserver.py", line 317, in _handle_request_noblock
+    self.process_request(request, client_address)
+  File "/usr/lib/python3.11/socketserver.py", line 348, in process_request
+    self.finish_request(request, client_address)
+  File "/usr/lib/python3.11/socketserver.py", line 361, in finish_request
+    self.RequestHandlerClass(request, client_address, self)
+  File "/usr/lib/python3.11/socketserver.py", line 755, in __init__
+    self.handle()
+  File "/usr/lib/python3.11/http/server.py", line 432, in handle
+    self.handle_one_request()
+  File "/usr/lib/python3.11/http/server.py", line 420, in handle_one_request
+    method()
+  File "/home/lenovo/Desktop/StratConn/SRC/Interfaces/WEB/HTTPServer.py", line 31, in do_POST
+    response = self.Sub_handler(request, my_infos)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/lenovo/Desktop/StratConn/SRC/TrackingEngine/Tracker.py", line 17, in __call__
+    response = self.CStrat.SendEvent(my_infos)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/lenovo/Desktop/StratConn/SRC/TrackingEngine/ConnStrat.py", line 43, in SendEvent
+    TypeEvent,DataEvent = data['EventType'],data['data']
+                          ~~~~^^^^^^^^^^^^^
+KeyError: 'EventType'
+----------------------------------------
+----------------------------------------
+Exception occurred during processing of request from ('127.0.0.1', 42156)
+Traceback (most recent call last):
+  File "/usr/lib/python3.11/socketserver.py", line 317, in _handle_request_noblock
+    self.process_request(request, client_address)
+  File "/usr/lib/python3.11/socketserver.py", line 348, in process_request
+    self.finish_request(request, client_address)
+  File "/usr/lib/python3.11/socketserver.py", line 361, in finish_request
+    self.RequestHandlerClass(request, client_address, self)
+  File "/usr/lib/python3.11/socketserver.py", line 755, in __init__
+    self.handle()
+  File "/usr/lib/python3.11/http/server.py", line 432, in handle
+    self.handle_one_request()
+  File "/usr/lib/python3.11/http/server.py", line 420, in handle_one_request
+    method()
+  File "/home/lenovo/Desktop/StratConn/SRC/Interfaces/WEB/HTTPServer.py", line 31, in do_POST
+    response = self.Sub_handler(request, my_infos)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/lenovo/Desktop/StratConn/SRC/TrackingEngine/Tracker.py", line 17, in __call__
+    response = self.CStrat.SendEvent(my_infos)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/lenovo/Desktop/StratConn/SRC/TrackingEngine/ConnStrat.py", line 43, in SendEvent
+    TypeEvent,DataEvent = data['EventType'],data['data']
+                          ~~~~^^^^^^^^^^^^^
+KeyError: 'EventType'
+----------------------------------------
+----------------------------------------
+Exception occurred during processing of request from ('127.0.0.1', 42168)
+Traceback (most recent call last):
+  File "/usr/lib/python3.11/socketserver.py", line 317, in _handle_request_noblock
+    self.process_request(request, client_address)
+  File "/usr/lib/python3.11/socketserver.py", line 348, in process_request
+    self.finish_request(request, client_address)
+  File "/usr/lib/python3.11/socketserver.py", line 361, in finish_request
+    self.RequestHandlerClass(request, client_address, self)
+  File "/usr/lib/python3.11/socketserver.py", line 755, in __init__
+    self.handle()
+  File "/usr/lib/python3.11/http/server.py", line 432, in handle
+    self.handle_one_request()
+  File "/usr/lib/python3.11/http/server.py", line 420, in handle_one_request
+    method()
+  File "/home/lenovo/Desktop/StratConn/SRC/Interfaces/WEB/HTTPServer.py", line 31, in do_POST
+    response = self.Sub_handler(request, my_infos)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/lenovo/Desktop/StratConn/SRC/TrackingEngine/Tracker.py", line 17, in __call__
+    response = self.CStrat.SendEvent(my_infos)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/lenovo/Desktop/StratConn/SRC/TrackingEngine/ConnStrat.py", line 43, in SendEvent
+    TypeEvent,DataEvent = data['EventType'],data['data']
+                          ~~~~^^^^^^^^^^^^^
+KeyError: 'EventType'
+----------------------------------------
+----------------------------------------
+Exception occurred during processing of request from ('127.0.0.1', 42178)
+Traceback (most recent call last):
+  File "/usr/lib/python3.11/socketserver.py", line 317, in _handle_request_noblock
+    self.process_request(request, client_address)
+  File "/usr/lib/python3.11/socketserver.py", line 348, in process_request
+    self.finish_request(request, client_address)
+  File "/usr/lib/python3.11/socketserver.py", line 361, in finish_request
+    self.RequestHandlerClass(request, client_address, self)
+  File "/usr/lib/python3.11/socketserver.py", line 755, in __init__
+    self.handle()
+  File "/usr/lib/python3.11/http/server.py", line 432, in handle
+    self.handle_one_request()
+  File "/usr/lib/python3.11/http/server.py", line 420, in handle_one_request
+    method()
+  File "/home/lenovo/Desktop/StratConn/SRC/Interfaces/WEB/HTTPServer.py", line 31, in do_POST
+    response = self.Sub_handler(request, my_infos)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/lenovo/Desktop/StratConn/SRC/TrackingEngine/Tracker.py", line 17, in __call__
+    response = self.CStrat.SendEvent(my_infos)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/lenovo/Desktop/StratConn/SRC/TrackingEngine/ConnStrat.py", line 43, in SendEvent
+    TypeEvent,DataEvent = data['EventType'],data['data']
+                          ~~~~^^^^^^^^^^^^^
+KeyError: 'EventType'
+----------------------------------------
+----------------------------------------
+Exception occurred during processing of request from ('127.0.0.1', 42182)
+Traceback (most recent call last):
+  File "/usr/lib/python3.11/socketserver.py", line 317, in _handle_request_noblock
+    self.process_request(request, client_address)
+  File "/usr/lib/python3.11/socketserver.py", line 348, in process_request
+    self.finish_request(request, client_address)
+  File "/usr/lib/python3.11/socketserver.py", line 361, in finish_request
+    self.RequestHandlerClass(request, client_address, self)
+  File "/usr/lib/python3.11/socketserver.py", line 755, in __init__
+    self.handle()
+  File "/usr/lib/python3.11/http/server.py", line 432, in handle
+    self.handle_one_request()
+  File "/usr/lib/python3.11/http/server.py", line 420, in handle_one_request
+    method()
+  File "/home/lenovo/Desktop/StratConn/SRC/Interfaces/WEB/HTTPServer.py", line 31, in do_POST
+    response = self.Sub_handler(request, my_infos)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/lenovo/Desktop/StratConn/SRC/TrackingEngine/Tracker.py", line 17, in __call__
+    response = self.CStrat.SendEvent(my_infos)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/lenovo/Desktop/StratConn/SRC/TrackingEngine/ConnStrat.py", line 43, in SendEvent
+    TypeEvent,DataEvent = data['EventType'],data['data']
+                          ~~~~^^^^^^^^^^^^^
+KeyError: 'EventType'
+----------------------------------------
+----------------------------------------
+Exception occurred during processing of request from ('127.0.0.1', 42192)
+Traceback (most recent call last):
+  File "/usr/lib/python3.11/socketserver.py", line 317, in _handle_request_noblock
+    self.process_request(request, client_address)
+  File "/usr/lib/python3.11/socketserver.py", line 348, in process_request
+    self.finish_request(request, client_address)
+  File "/usr/lib/python3.11/socketserver.py", line 361, in finish_request
+    self.RequestHandlerClass(request, client_address, self)
+  File "/usr/lib/python3.11/socketserver.py", line 755, in __init__
+    self.handle()
+  File "/usr/lib/python3.11/http/server.py", line 432, in handle
+    self.handle_one_request()
+  File "/usr/lib/python3.11/http/server.py", line 420, in handle_one_request
+    method()
+  File "/home/lenovo/Desktop/StratConn/SRC/Interfaces/WEB/HTTPServer.py", line 31, in do_POST
+    response = self.Sub_handler(request, my_infos)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/lenovo/Desktop/StratConn/SRC/TrackingEngine/Tracker.py", line 17, in __call__
+    response = self.CStrat.SendEvent(my_infos)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/lenovo/Desktop/StratConn/SRC/TrackingEngine/ConnStrat.py", line 43, in SendEvent
+    TypeEvent,DataEvent = data['EventType'],data['data']
+                          ~~~~^^^^^^^^^^^^^
+KeyError: 'EventType'
+----------------------------------------
+----------------------------------------
+Exception occurred during processing of request from ('127.0.0.1', 42204)
+Traceback (most recent call last):
+  File "/usr/lib/python3.11/socketserver.py", line 317, in _handle_request_noblock
+    self.process_request(request, client_address)
+  File "/usr/lib/python3.11/socketserver.py", line 348, in process_request
+    self.finish_request(request, client_address)
+  File "/usr/lib/python3.11/socketserver.py", line 361, in finish_request
+    self.RequestHandlerClass(request, client_address, self)
+  File "/usr/lib/python3.11/socketserver.py", line 755, in __init__
+    self.handle()
+  File "/usr/lib/python3.11/http/server.py", line 432, in handle
+    self.handle_one_request()
+  File "/usr/lib/python3.11/http/server.py", line 420, in handle_one_request
+    method()
+  File "/home/lenovo/Desktop/StratConn/SRC/Interfaces/WEB/HTTPServer.py", line 31, in do_POST
+    response = self.Sub_handler(request, my_infos)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/lenovo/Desktop/StratConn/SRC/TrackingEngine/Tracker.py", line 17, in __call__
+    response = self.CStrat.SendEvent(my_infos)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/lenovo/Desktop/StratConn/SRC/TrackingEngine/ConnStrat.py", line 43, in SendEvent
+    TypeEvent,DataEvent = data['EventType'],data['data']
+                          ~~~~^^^^^^^^^^^^^
+KeyError: 'EventType'
+----------------------------------------
+----------------------------------------
+Exception occurred during processing of request from ('127.0.0.1', 42216)
+Traceback (most recent call last):
+  File "/usr/lib/python3.11/socketserver.py", line 317, in _handle_request_noblock
+    self.process_request(request, client_address)
+  File "/usr/lib/python3.11/socketserver.py", line 348, in process_request
+    self.finish_request(request, client_address)
+  File "/usr/lib/python3.11/socketserver.py", line 361, in finish_request
+    self.RequestHandlerClass(request, client_address, self)
+  File "/usr/lib/python3.11/socketserver.py", line 755, in __init__
+    self.handle()
+  File "/usr/lib/python3.11/http/server.py", line 432, in handle
+    self.handle_one_request()
+  File "/usr/lib/python3.11/http/server.py", line 420, in handle_one_request
+    method()
+  File "/home/lenovo/Desktop/StratConn/SRC/Interfaces/WEB/HTTPServer.py", line 31, in do_POST
+    response = self.Sub_handler(request, my_infos)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/lenovo/Desktop/StratConn/SRC/TrackingEngine/Tracker.py", line 17, in __call__
+    response = self.CStrat.SendEvent(my_infos)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/lenovo/Desktop/StratConn/SRC/TrackingEngine/ConnStrat.py", line 43, in SendEvent
+    TypeEvent,DataEvent = data['EventType'],data['data']
+                          ~~~~^^^^^^^^^^^^^
+KeyError: 'EventType'
+----------------------------------------
+----------------------------------------
+Exception occurred during processing of request from ('127.0.0.1', 42218)
+Traceback (most recent call last):
+  File "/usr/lib/python3.11/socketserver.py", line 317, in _handle_request_noblock
+    self.process_request(request, client_address)
+  File "/usr/lib/python3.11/socketserver.py", line 348, in process_request
+    self.finish_request(request, client_address)
+  File "/usr/lib/python3.11/socketserver.py", line 361, in finish_request
+    self.RequestHandlerClass(request, client_address, self)
+  File "/usr/lib/python3.11/socketserver.py", line 755, in __init__
+    self.handle()
+  File "/usr/lib/python3.11/http/server.py", line 432, in handle
+    self.handle_one_request()
+  File "/usr/lib/python3.11/http/server.py", line 420, in handle_one_request
+    method()
+  File "/home/lenovo/Desktop/StratConn/SRC/Interfaces/WEB/HTTPServer.py", line 31, in do_POST
+    response = self.Sub_handler(request, my_infos)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/lenovo/Desktop/StratConn/SRC/TrackingEngine/Tracker.py", line 17, in __call__
+    response = self.CStrat.SendEvent(my_infos)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/lenovo/Desktop/StratConn/SRC/TrackingEngine/ConnStrat.py", line 43, in SendEvent
+    TypeEvent,DataEvent = data['EventType'],data['data']
+                          ~~~~^^^^^^^^^^^^^
+KeyError: 'EventType'
+----------------------------------------
