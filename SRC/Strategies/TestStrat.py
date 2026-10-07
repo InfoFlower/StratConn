@@ -36,6 +36,7 @@ class strategie:
         Process price updates and generate trading requests.
         Simple logic: buy on dips, sell on peaks.
         """
+        print(f"[TestStrat] Price received: {price}, Timestamp: {timestamp}")
         self.last_price = price
         self.cur_time = timestamp
         self.prices.append(price)  # Track price history
@@ -75,6 +76,7 @@ class strategie:
         """
         Process trading events.
         """
+        print(f"[TestStrat] Event received: {event_type}, Data: {data}")
         if event_type == 'PRICE_UPDATE':
             print(f"[Event] Price update: {data}")
         

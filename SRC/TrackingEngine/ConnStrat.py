@@ -24,6 +24,13 @@ class ConnStrat :
         if Request['request'] == REQUEST.STILL :
             return {'status':'success',
                     'data':{'action':'still'}}
+        elif Request['request'] == REQUEST.SUBMIT_ORDER :
+            Order = Request['params']
+            self.Current_Orders.append(Order)
+            response = self.GateComm.submit_order(Order)
+            return {'status':'success',
+                    'data':{'action':'submit_order',
+                            'response':response}}
 
 
     def SendEvent(self, data):

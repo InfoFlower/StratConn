@@ -1,5 +1,7 @@
 import threading
 import socket
+
+from attrs import asdict
 from SRC.TrackingEngine.ConnStrat import ConnStrat
 import json
 
@@ -44,29 +46,17 @@ class GenTrack :
 
     def _run_simulation(self, HOST, PORT):
         with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as sock:
-            sock.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
             sock.bind((HOST, PORT))
             sock.listen(1)
             conn, addr = sock.accept()
             with conn:
                 print('Connected by', addr)
-                buffer = b''
                 while True:
-                    chunk = conn.recv(1024)
-                    if not chunk:
-                        break
-                    buffer += chunk
-                    # Process complete lines (separated by \n)
-                    while b'\n' in buffer:
-                        line, buffer = buffer.split(b'\n', 1)
-                        if line:
-                            try:
-                                data = json.loads(line.decode('utf-8'))
-                                res = self.CStrat.UpdatePrice(data)
-                                conn.sendall(json.dumps(res).encode('utf-8') + b'\n')
-                            except json.JSONDecodeError as e:
-                                print(f'JSON decode error: {e}')
-                                conn.sendall(json.dumps({'error': 'Invalid JSON'}).encode('utf-8') + b'\n')
-        with self._lock:
-            self.running = False
-        print('End')
+                    bdata = conn.recv(1024)
+                    if not bdata: break
+                    data = json.loads(bdata)
+                    res = self.CStrat.UpdatePrice(data)
+                    dres = asdict(res)
+                    fres = json.dumps(dres).encode('utf-8')
+                    conn.sendall(fres)
+        self.running = False
