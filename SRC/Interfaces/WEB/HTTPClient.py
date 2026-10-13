@@ -1,6 +1,6 @@
 from urllib.request import Request, urlopen
 import json
-
+from enum import Enum
 
 class BasicClient:
     def __init__(self, HOST, PORT):
@@ -12,10 +12,14 @@ class BasicClient:
             'request': request_type,
             'data': data or {}
         }
-        data_encoded = json.dumps(payload).encode('utf-8')
-        print(f'SENDING to {self.server_url} request {request_type}')
+        try :
+            data_encoded = json.dumps(payload, default=lambda o: o.name if isinstance(o, Enum) else str(o)).encode('utf-8')
+        except Exception as e:
+            print(f'[STRATCONN] ERROR SENDING {payload}')
+            return {'status': 'FAILED', 'error': repr(e)}
+        print(f'[STRATCONN] SENDING to {self.server_url} request {request_type}')
         req = Request(self.server_url, data=data_encoded, headers={'Content-Type': 'application/json'})
-        print(f'REQUEST SENDED')
+        print(f'[STRATCONN] REQUEST SENDED')
         try:
             with urlopen(req) as response:
                 return json.loads(response.read().decode('utf-8'))

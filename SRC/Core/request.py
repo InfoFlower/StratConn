@@ -5,3 +5,4 @@ class REQUEST(Enum):
     STILL = auto()
     CANCEL_ORDER = auto()
     CLOSE_POSITION = auto()
+    GET_PRICE = auto()

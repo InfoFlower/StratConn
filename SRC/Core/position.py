@@ -1,4 +1,4 @@
-from dataclasses import dataclass, field
+from dataclasses import dataclass, asdict
 from typing import Optional
 from .tb_types import Side, PositionStatus, Asset
 

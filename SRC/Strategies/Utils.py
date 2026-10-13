@@ -1,2 +1,0 @@
-def GetOrderById():
-    pass
