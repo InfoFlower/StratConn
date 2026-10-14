@@ -4,6 +4,7 @@ from Interfaces.WEB.HTTPServer import run
 Adr = '127.0.0.1'
 PORT = 8081
 
+a = 'a'
 WS_ADR= '127.0.0.1'
 WS_PORT= 8000
 
