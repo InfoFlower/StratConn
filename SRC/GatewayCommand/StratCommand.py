@@ -22,3 +22,15 @@ class GateComm:
     def get_price(self):
         """Demande le prix courant au broker"""
         return self.sender.send_request('GET_PRICE')
+
+    def get_orders(self):
+        """Liste les ordres, filtrés par statut si donné ('PENDING', ...)"""
+        return self.sender.send_request('GET_ORDERS')
+
+    def get_positions(self):
+        """Liste les positions, filtrées par statut si donné ('OPENED', ...)"""
+        return self.sender.send_request('GET_POSITIONS')
+
+    def get_wallet(self):
+        """Demande portfolio, locked et available du wallet"""
+        return self.sender.send_request('GET_WALLET')

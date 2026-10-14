@@ -33,7 +33,6 @@ class GenTrack :
                 "message": "Simulation already running"
             }
         host, port = self.WEBSOC, self.WSPORT
-        self.running = True
         self._thread = threading.Thread(
             target=self._run_simulation,
             args=(host, port),
@@ -63,6 +62,7 @@ class GenTrack :
                         dres = self._process_line(line)
                         fres = json.dumps(dres, default=self._enum_encoder) + '\n'
                         conn.sendall(fres.encode('utf-8'))
+                        self.running = True
         finally:
             self.running = False
 

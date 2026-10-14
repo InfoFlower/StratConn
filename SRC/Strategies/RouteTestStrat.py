@@ -63,7 +63,8 @@ class strategie:
         print("[RouteTest] Initialized")
         return None
 
-    def ProcessPrice(self, price, timestamp):
+    def ProcessPrice(self, data, timestamp):
+        price = data['close']
         self.last_price = price
         self.tick += 1
 

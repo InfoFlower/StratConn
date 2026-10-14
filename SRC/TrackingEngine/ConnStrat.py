@@ -1,7 +1,4 @@
-import datetime
-
 from Core.request import REQUEST
-from Core.tb_types import EventType
 from GatewayCommand.StratCommand import GateComm
 
 
@@ -18,35 +15,74 @@ class ConnStrat :
         return strategie_mod.strategie()
 
     def UpdatePrice(self, data):
-        Price, Timestamp = float(data['close']), int(data['timestamp'])
-        Request = self.CurStrat.ProcessPrice(Price, Timestamp)
-        if Request['request'] == REQUEST.STILL :
-            return {'status':'success',
-                    'data':{'action':'still'}}
-        elif Request['request'] == REQUEST.SUBMIT_ORDER :
-            Order = Request['params']
-            self.Current_Orders.append(Order)
-            response = self.GateComm.submit_order(Order)
+        """
+        ProcessPrice retourne une requête (dict), une liste de requêtes, ou None (= STILL).
+        Les requêtes sont envoyées dans l'ordre ; ProcessResponse est appelé après chacune,
+        avant l'envoi de la suivante. Une requête inconnue est sautée, les autres partent quand même.
+        """
+        Price, Timestamp = self._convert_prices(data), int(data['timestamp'])
+        Requests = self.CurStrat.ProcessPrice(Price, Timestamp)
+        if Requests is None:
+            Requests = []
+        elif isinstance(Requests, dict):
+            Requests = [Requests]
+
+        Status, Actions = 'success', []
+        for Request in Requests:
+            Action = self.SendRequest(Request)
+            if Action['action'] == 'unknown':
+                Status = 'FAILED'
+            Actions.append(Action)
+        if not Actions:
+            Actions.append({'action':'still'})
+        return {'status':Status,
+                'data':{'actions':Actions}}
+    
+    def _convert_prices(self, data):
+        for key in ('open', 'high', 'low', 'close', 'volume'):
+            if key in data:
+                data[key] = float(data[key])
+        return data
+    
+    def SendRequest(self, Request):
+        """Envoie une requête de la stratégie au broker ; retourne {'action', 'response'}"""
+        if not isinstance(Request, dict):
+            Request = {}
+        RequestType = Request.get('request')
+        Params = Request.get('params') or {}
+        if RequestType == REQUEST.STILL :
+            return {'action':'still'}
+        elif RequestType == REQUEST.SUBMIT_ORDER :
+            self.Current_Orders.append(Params)
+            response = self.GateComm.submit_order(Params)
             Action = 'submit_order'
-        elif Request['request'] == REQUEST.CANCEL_ORDER :
-            response = self.GateComm.cancel_order(Request['params']['OrderId'])
+        elif RequestType == REQUEST.CANCEL_ORDER :
+            response = self.GateComm.cancel_order(Params['OrderId'])
             Action = 'cancel_order'
-        elif Request['request'] == REQUEST.CLOSE_POSITION :
-            response = self.GateComm.close_position(Request['params']['PositionId'])
+        elif RequestType == REQUEST.CLOSE_POSITION :
+            response = self.GateComm.close_position(Params['PositionId'])
             Action = 'close_position'
-        elif Request['request'] == REQUEST.GET_PRICE :
+        elif RequestType == REQUEST.GET_PRICE :
             response = self.GateComm.get_price()
             Action = 'get_price'
+        elif RequestType == REQUEST.GET_ORDERS :
+            response = self.GateComm.get_orders(Params.get('status'))
+            Action = 'get_orders'
+        elif RequestType == REQUEST.GET_POSITIONS :
+            response = self.GateComm.get_positions(Params.get('status'))
+            Action = 'get_positions'
+        elif RequestType == REQUEST.GET_WALLET :
+            response = self.GateComm.get_wallet()
+            Action = 'get_wallet'
         else :
-            return {'status':'FAILED',
-                    'data':{'action':'unknown', 'request':str(Request['request'])}}
+            print(f'[STRATCONN] Unknown request: {Request}')
+            return {'action':'unknown', 'request':str(RequestType)}
 
         # Retour optionnel de la réponse broker à la stratégie (ex. pour récupérer les ids)
         if hasattr(self.CurStrat, 'ProcessResponse'):
-            self.CurStrat.ProcessResponse(Request['request'], response)
-        return {'status':'success',
-                'data':{'action':Action,
-                        'response':response}}
+            self.CurStrat.ProcessResponse(RequestType, response)
+        return {'action':Action,
+                'response':response}
 
 
     def SendEvent(self, data):
